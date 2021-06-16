@@ -1,0 +1,26 @@
+.products-container {
+	padding: 40px 25px;	
+	width: 95%;
+	margin: 0 auto;
+	border-radius: 10px;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+	overflow: hidden;
+	border: solid 3px orange;
+	border-width: 6px 0 0 0;
+	max-width: 800px;
+}
+
+.products-container .product-item:last-child{
+    margin:0;
+}
+
+
+@media only screen and (min-width: 600px) {
+
+	.products-container {
+		padding: 40px;		
+		width: 90%;		
+		border: solid 3px orange;		
+	}
+
+}

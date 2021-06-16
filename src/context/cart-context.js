@@ -2,7 +2,9 @@ import React from "react"
 
 const CartContext= React.createContext({
     products:[],
-    purchaseProcess: ()=>{}
+    itemsAmount: 0,
+    purchaseProcess: ()=>{},
+    removeProcess: ()=>{}
 })
 
 export default CartContext

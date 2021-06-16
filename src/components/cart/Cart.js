@@ -1,38 +1,56 @@
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useRef, useState, Fragment } from "react"
+import {createPortal} from "react-dom"
 import CartContext from "../../context/cart-context"
 import ModalCart from "../modals/ModalCart"
+import "./cart.css"
 
-const Cart = () => {
+const Cart = (props) => {
+
 	const context = useContext(CartContext)
-	const [showModal, setShowModal]=useState(false)
-
-	const countItems = (items) => {
-		let totalItems = 0
-		let registeredProducts = [...items]
-
-		for (let i = 0; i < registeredProducts.length; i++) {
-			totalItems += parseInt(registeredProducts[i].productQuantity)
-		}
-		return totalItems
-	}
-
-	const showOrdersModal=()=>{
-		setShowModal(modalState=>{
+	const [showModal, setShowModal] = useState(false)
+	const cartShort = useRef()
+	
+	const showOrdersModal = () => {
+		setShowModal((modalState) => {
 			return !modalState
 		})
 	}
 
+	useEffect(() => {
+		let colorTimer = null
+		cartShort.current.classList.remove("cart--changing")
+		clearInterval(colorTimer)
+
+		if (context.itemsAmount > 0) {
+			cartShort.current.classList.add("cart--changing")
+			colorTimer = setTimeout(() => {
+				cartShort.current.classList.remove("cart--changing")
+				clearInterval(colorTimer)
+			}, 300)
+		}
+	}, [context.itemsAmount])
+	
+
 	return (
-		<React.Fragment>
-			<section >
-				<div>cart icon</div>
-				<div>cart name</div>
-				<div>{countItems(context.products)}</div>
-				<button onClick={showOrdersModal}>view cart</button>
+		<Fragment>
+			<section
+				ref={cartShort}
+				className="cart"
+				onClick={showOrdersModal}				
+			>
+				<div
+					className="cart__icon"
+					style={{ backgroundImage: "url(" + props.cartIcon + ")" }}
+				></div>
+				<div className="cart__name">{props.cartName}</div>
+				<div className="cart__counter">{context.itemsAmount}</div>
 			</section>
-			{showModal && <ModalCart closeModal={showOrdersModal}/>}
-			
-		</React.Fragment>
+
+			{createPortal(
+				showModal && <ModalCart closeModal={showOrdersModal} />,
+				document.getElementById("modal-container")
+			)}
+		</Fragment>
 	)
 }
 

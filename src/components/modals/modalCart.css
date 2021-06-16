@@ -1,4 +1,130 @@
-.modal-cart{
-    padding: 30px;
-    background-color: #CCC;
+.modal-cart__backdrop {
+	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.8);
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+
+.modal-cart {
+	background-color: #fff;
+	position: absolute;
+	width: 100%;
+	max-width: 1000px;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.modal-cart__header {
+	display: flex;
+	justify-content: space-between;
+	padding: 15px 20px;
+	align-items: center;
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+	background-color: #b52b24;
+}
+
+.modal-cart__header button {
+	width: 20px;
+	border: none;
+	cursor: pointer;
+	background-color: #eeb99f;
+	color: #572f0c;
+	border: solid 2px rgb(255, 255, 255);
+	text-transform: uppercase;
+	font-weight: bold;
+	height: 20px;
+	border-radius: 5px;
+}
+
+.modal-cart__header h2 {
+	margin: 0;
+	color: #fff;
+	font-size: 16px;
+}
+
+.modal-cart__products {
+	padding: 20px;
+}
+
+.modal-cart__products .modal-item:last-child {
+	margin-bottom: 0;
+	padding: 10px 0 0 0;
+	border: none;
+}
+
+.modal-footer {
+	background-color: #ffeac1;
+	display: flex;
+	justify-content: space-between;
+}
+
+.modal-total-amount {
+	padding: 10px;
+}
+
+.modal-total-amount h3 {
+	margin: 0 0 5px 0;
+	font-size: 16px;
+}
+
+.modal-total-amount p {
+	margin: 0;
+	color: #b52b24;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+.modal-footer button {
+	width: 100px;
+	border: none;
+	cursor: pointer;
+	background-color: #eeb99f;
+	color: #572f0c;
+	border: solid 3px rgb(255, 255, 255);
+	border-width: 0 0 0 3px;
+	text-transform: uppercase;
+	font-weight: bold;
+}
+
+@media only screen and (min-width: 500px) {
+	.modal-cart {
+		width: 80%;
+	}
+
+	.modal-cart__products {
+		padding: 30px;
+	}
+
+	.modal-cart__header h2 {
+		font-size: 20px;
+	}
+
+	.modal-cart__header button {
+		width: 30px;
+		height: 30px;
+		border: solid 3px rgb(255, 255, 255);
+		border-radius: 10px;
+	}
+
+	.modal-footer button {
+		width: 200px;
+	}
+
+	.modal-total-amount {
+		padding: 20px;
+	}
+
+	.modal-total-amount h3 {
+		font-size: 22px;
+	}
+
+	.modal-total-amount p {		
+		font-size: 25px;		
+	}
 }

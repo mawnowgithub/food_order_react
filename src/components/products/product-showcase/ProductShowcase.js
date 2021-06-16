@@ -1,5 +1,6 @@
 import React from "react"
 import ProductElement from "../product-element/ProductElement"
+import "./products-showcase.css"
 
 const ProductShowcase = (props) => {
 	let productList = props.products
